@@ -12,6 +12,31 @@ export default class ProductModel {
     static  getAllProduct(){
         return products;
     }
+    static addProuct(product){
+      product.id = products.length + 1;
+      products.push(product);
+      return product;
+    }
+
+    static getOneProduct(id){
+      const product = products.find(p => p.id == id);
+      return product;
+    }
+
+    
+    static filter(minPrice, maxPrice, category){
+      const result = products.filter((product)=>{
+        return(
+        (!minPrice || 
+          product.price >= minPrice) &&
+        (!maxPrice || 
+          product.price <= maxPrice) &&
+        (!category || 
+          product.category == category)
+        );
+      });
+      return result;
+    }
 }
 
 

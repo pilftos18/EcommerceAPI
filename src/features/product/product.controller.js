@@ -2,19 +2,49 @@ import ProductModel from "./product.model.js";
 
 export default class ProductController{
         getAllProducts(req,res) {
-            console.log('Headers;;');
-            
             const product = ProductModel.getAllProduct();
             res.status(200).send(product);
         }
 
         addProduct(req,res) {
+           const {name, desc, price, sizes }  = req.body;
+           const newProduct ={
+                name,
+                desc,
+                price: parseFloat(price),
+                sizes: sizes.split(','),
+                imageUrl: req.file.filename
+            }
+            const createRecord =  ProductModel.addProuct(newProduct);
+            res.status(201).send({message: "Product added successfully", createRecord});
         }
 
         rateProduct(req,res) {
         }
 
         getOneProduct(req, res){
+            const id = req.params.id;
+            const product = ProductModel.getOneProduct(id);
 
+            if(!product){
+                return res.status(404).send({message: "Product not found"});
+            }else{
+                res.status(200).send(product);
+            }
+        }
+
+        filterProducts(req, res){
+            const minPrice = req.query.minPrice;
+            console.log('logminprice', req.query.minPrice);
+            const maxPrice = req.query.maxPrice;
+            console.log('maxprice', req.query.maxPrice);
+            console.log('category', req.query.category);
+            const category = req.query.category;
+            const result = ProductModel.filter(
+                minPrice,
+                maxPrice,
+                category
+            );
+            res.status(200).send(result);
         }
 }

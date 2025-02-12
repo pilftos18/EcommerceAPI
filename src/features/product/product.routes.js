@@ -1,5 +1,6 @@
 // manage routes/paths productController
 import ProductController from './product.controller.js';
+import {upload} from '../../middleware/fileupload.middleware.js';
 //1 .import express
 import express from 'express'
 
@@ -7,8 +8,20 @@ import express from 'express'
 const ProductRouter = express.Router();
 const productcontroller = new ProductController();
 
+
+ProductRouter.get(
+    '/filter',
+    productcontroller.filterProducts
+);
+
 ProductRouter.get('/',productcontroller.getAllProducts);
-console.log('check your routes');
+ProductRouter.post(
+    '/',
+    upload.single('imageUrl'),  //upload.array() multiple file uplaod
+    productcontroller.addProduct
+);
+ProductRouter.get('/:id',productcontroller.getOneProduct);
+
 
 
 
