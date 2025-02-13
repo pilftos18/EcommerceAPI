@@ -8,7 +8,7 @@ const ProductRouter = express.Router();
 const productcontroller = new ProductController();
 
 ProductRouter.get('/',productcontroller.getAllProducts);
-console.log('check your routes');
+ProductRouter.post('/',productcontroller.addProduct);
 
 
 

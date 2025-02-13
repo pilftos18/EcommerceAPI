@@ -9,6 +9,11 @@ export default class ProductController{
         }
 
         addProduct(req,res) {
+            console.log(req.body);
+            
+            console.log('thiss is post request');
+            res.status(200).send('Post request Received'); 
+            
         }
 
         rateProduct(req,res) {
