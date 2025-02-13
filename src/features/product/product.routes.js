@@ -6,21 +6,21 @@ import express from 'express'
 
 //2. initialize express routes
 const ProductRouter = express.Router();
-const productcontroller = new ProductController();
+const productController = new ProductController();
 
 
 ProductRouter.get(
     '/filter',
-    productcontroller.filterProducts
+    productController.filterProducts
 );
 
-ProductRouter.get('/',productcontroller.getAllProducts);
+ProductRouter.get('/',productController.getAllProducts);
 ProductRouter.post(
     '/',
-    upload.single('imageUrl'),  //upload.array() multiple file uplaod
-    productcontroller.addProduct
+    upload.single('imageUrl'),
+    productController.addProduct
 );
-ProductRouter.get('/:id',productcontroller.getOneProduct);
+ProductRouter.get('/:id',productController.getOneProduct);
 
 
 
