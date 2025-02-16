@@ -2,7 +2,8 @@ import express from 'express';
 import productRouter from './src/features/product/product.routes.js';
 import userRouter from './src/features/user/user.routes.js';
 import bodyParser from 'body-parser';
-import basicAuthorizer from './src/middleware/basicAuth.middleware.js';
+// import basicAuthorizer from './src/middleware/basicAuth.middleware.js';
+import jwtAuth from './src/middleware/jwt.middleware.js';
 //create Server
 const app = express();
 
@@ -11,7 +12,9 @@ app.use(bodyParser.json());
 // app.use(express.urlencoded({ extended: true }));
 
 //For all releated product, redirect to product routes
-app.use("/api/products", basicAuthorizer, productRouter); 
+// app.use("/api/products", basicAuthorizer, productRouter); 
+app.use("/api/products", jwtAuth, productRouter); 
+
 app.use("/api/users", userRouter); 
 
 //default request handler
