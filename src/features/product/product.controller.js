@@ -20,7 +20,28 @@ export default class ProductController{
         }
 
         rateProduct(req,res) {
+            // console.log(req.query)
+            const userID = req.query.userID;
+            const productId = req.query.productId;
+            const rating = req.query.rating;
+
+        const error = ProductModel.rateProduct(
+                userID, 
+                productId,
+                rating
+            );
+
+            console.log('err',error);
+            
+
+            if(error) {
+                return res.status(400).send(error);
+            }else{
+                return res.status(200).send("Rating has been added successfully");
+            }
+
         }
+       
 
         getOneProduct(req, res){
             const id = req.params.id;

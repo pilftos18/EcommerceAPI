@@ -9,10 +9,10 @@ const ProductRouter = express.Router();
 const productController = new ProductController();
 
 
-ProductRouter.get(
-    '/filter',
-    productController.filterProducts
-);
+
+ProductRouter.post('/rate',productController.rateProduct);
+
+ProductRouter.get('/filter',productController.filterProducts);
 
 ProductRouter.get('/',productController.getAllProducts);
 ProductRouter.post(
@@ -21,6 +21,7 @@ ProductRouter.post(
     productController.addProduct
 );
 ProductRouter.get('/:id',productController.getOneProduct);
+
 
 
 
