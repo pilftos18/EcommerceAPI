@@ -24,6 +24,10 @@ export default class UserModel{
         return User;
     }
 
+    static getUserById(id){
+        return User.find(u=>u.id == id);
+    }
+
 }
 
 let  User = [{

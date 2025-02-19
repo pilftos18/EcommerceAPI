@@ -20,7 +20,8 @@ export default class UserController{
                 "N5KfQ-rYKArw`c6",
                 {expiresIn:'1h'}
             )
-
+            console.log(token);
+            
             //2.Send Token
             
             res.status(200).send(token);

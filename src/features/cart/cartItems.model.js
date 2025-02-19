@@ -1,9 +1,9 @@
 export default class CartItemsModel{
-    constructor(productID, userID, quantity){
-        this.productID = productID;
-        this.userID = userID;
-        this.quantity = quantity;
-        this.id = id;
+    constructor(productID, userID, quantity,id){
+        this.productID  = productID;
+        this.userID     = userID;
+        this.quantity   = quantity;
+        this.id         = id;
     }
 
     static add(productID, userID, quantity) {
@@ -24,7 +24,7 @@ export default class CartItemsModel{
     }
 }
 
-var cartItems = [
-    new CartItemsModel(1,2,1,1),
-    new CartItemsModel(1,1,2,1),
+var cartItems = [ 
+    new CartItemsModel('1','2','1','1'),
+    new CartItemsModel('1','1','2','2'),
 ];
