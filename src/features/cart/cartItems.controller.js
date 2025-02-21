@@ -29,16 +29,19 @@ export default class cartItemsController {
 
     get(req, res){
         const userID = req.userID;
-        console.log('userID', userID);
+        // console.log('userID', userID);
         const items = CartItemsModel.get(userID);
         return res.status(200).send(items);
 
     }
 
-    delete(req,res){
+    deleteproduct(req,res){
+        console.log(req.query);
+        // const id = req.params.id; // Debugging line
         const userID = req.userID;
-        const {cartId} = req.param.cartId;
-        const error =  CartItemsModel.delete(cartId,userID);
+        const cartId = req.params.id;
+
+        const error =  CartItemsModel.deleteproduct(cartId,userID);
       if(error){
         return res.status(404).send(error);
       }else{

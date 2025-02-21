@@ -5,11 +5,11 @@ const basicAuthorizer =(req,res,next)=>{
     if(!authHeader){
         return res.status(401).send("No authorization details found");
     }
-    console.log(authHeader);
+    // console.log(authHeader);
     
     //2. Extract Crdentials [Basic wijeiejiwqioQeoiwoejwo]
     const base64Crendential = authHeader.replace('Basic','');
-    console.log(base64Crendential);
+    // console.log(base64Crendential);
     
 
     //3. decode Credentials

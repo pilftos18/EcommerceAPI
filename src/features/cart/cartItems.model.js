@@ -23,7 +23,7 @@ export default class CartItemsModel{
         );
     }
 
-    static delete(cartItemID, userId){
+    static deleteproduct(cartItemID, userId){
         const index = cartItems.findIndex(c=> c.id == cartItemID && c.userID == userId);
         if(index !== -1){
             cartItems.splice(index, 1);
