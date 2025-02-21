@@ -1,20 +1,31 @@
+import ProductModel from '../product/product.model.js';
+import UserModel from '../user/user.model.js';
 export default class CartItemsModel{
     constructor(productID, userID, quantity,id){
         this.productID  = productID;
         this.userID     = userID;
-        this.quantity   = quantity;
+        this.quantity   = Number(quantity);;
         this.id         = id;
     }
 
     static add(productID, userID, quantity) {
-        const cartItem = new CartItemsModel(
-                productID,
-                userID, 
-                quantity
-            );
+     
+        // Find the cart item for the user and product
+        let cartItem = cartItems.find((item) => item.productID == productID && item.userID == userID);
+
+        if (cartItem) {
+            // Update the quantity if the item already exists in the cart
+            cartItem.quantity +=  Number(quantity);;
+            // console.log('qua',cartItem.quantity);
+            
+        } else {
+            // Create a new cart item and add it to the cart
+            cartItem = new CartItemsModel(productID, userID, quantity);
             cartItem.id = cartItems.length + 1;
             cartItems.push(cartItem);
-            return cartItem;
+        }
+
+        return cartItem;
     }
 
     static get(userID){
