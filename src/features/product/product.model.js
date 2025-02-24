@@ -1,4 +1,5 @@
 
+import { ApplicationError } from '../../error-handler/applicationError.js';
 import UserModel from  '../user/user.model.js';
 
 export default class ProductModel {
@@ -50,15 +51,15 @@ export default class ProductModel {
      
       
         if(!user){
-          throw new Error("User not found");
+          throw new ApplicationError("User not found", 404);
         }
 
         const product = products.find(
           (p)=> p.id == ProductId
         );
-        console.log('product',product);
+        // console.log('product',product);
         if(!product){
-          throw new Error(" Product not found");
+          throw new ApplicationError("Product not found", 400);
         }
          //2. check if user Rating is already available
          if(!product.ratings){
@@ -69,7 +70,7 @@ export default class ProductModel {
             rating: rating
           })
 
-          console.log('product',product);
+          // console.log('product',product);
 
         }else{
           //3.check if exiting rating is already available

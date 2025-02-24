@@ -19,13 +19,14 @@ export default class ProductController{
             res.status(201).send({message: "Product added successfully", createRecord});
         }
 
-        rateProduct(req,res) {
+        rateProduct(req,res,next) {
             // console.log(req.query)
+            try {
             const userID = req.query.userID;
             const productId = req.query.productId;
             const rating = req.query.rating;
 
-            try {
+        
                 ProductModel.rateProduct(
                     userID, 
                     productId,
@@ -33,7 +34,10 @@ export default class ProductController{
                 );
                 
             } catch (error) {
-                return res.status(400).send(error.message);
+                //return res.status(400).send(error.message);
+                console.log("Passing error: ");
+                
+                next(error);
             }
             return res.status(200).send("Rating has been added successfully");
 

@@ -9,6 +9,7 @@ import jwtAuth from './src/middleware/jwt.middleware.js';
 import cartItemRouter from './src/features/cart/cartItems.routes.js';
 import apiDocs from './swagger.json' assert { type: 'json' };
 import loggerMiddleware from './src/middleware/logger.middleware.js';
+import { ApplicationError } from './src/error-handler/applicationError.js';
 
 //create Server
 const app = express();
@@ -66,7 +67,12 @@ app.get('/', (req, res) => {
 
 app.use((error,req, res, next) => {
   console.log(error);
-  res.status(503).send('Something went wrong!');  // 503 for server error
+
+  if(error instanceof ApplicationError){
+     // 400 for bad request, 401 for unauthorized, 403 for forbidden, 404 for not found, 500 for server error, 503 for service 
+    return res.status(error.statusCode).json({ message: error.message }); 
+  }
+  res.status(500).send('Something went wrong!');  // 503 for service error
   
 })
 
