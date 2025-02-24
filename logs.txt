@@ -1,0 +1,11 @@
+{"level":"info","message":"\n  req URL : /api/products/filter?minPrice=10 \n  req Body : {}","service":"request-logging"}
+{"level":"info","message":"\n  req URL : /api/products/filter?minPrice=10 \n  req Body : {}","service":"request-logging"}
+{"level":"info","message":"\n  req URL : /api/products/filter?minPrice=10 \n  req Body : {}","service":"request-logging"}
+{"level":"info","message":"\n  req URL : /api/products/rate?userID=10&productId=1&rating=2.5 \n  req Body : {}","service":"request-logging"}
+{"level":"info","message":"\n  req URL : /api/products/rate?userID=10&productId=1&rating=2.5 \n  req Body : {}","service":"request-logging"}
+{"level":"info","message":"\n  req URL : /api/products/rate?userID=10&productId=10&rating=2.5 \n  req Body : {}","service":"request-logging"}
+{"level":"info","message":"\n  req URL : /api/products/rate?userID=2&productId=10&rating=2.5 \n  req Body : {}","service":"request-logging"}
+{"level":"info","message":"\n  req URL : /api/products/rate?userID=2&productIds=10&rating=2.5 \n  req Body : {}","service":"request-logging"}
+{"level":"info","message":"\n  req URL : /api/products?userID=2&productId=10&rating=2.5 \n  req Body : {}","service":"request-logging"}
+{"level":"info","message":"\n  req URL : /api/products?userID=2&productId=10&rating=2.5 \n  req Body : {}","service":"request-logging"}
+{"level":"info","message":"\n  req URL : /api/products/rate?userID=2&productId=10&rating=2.5 \n  req Body : {}","service":"request-logging"}

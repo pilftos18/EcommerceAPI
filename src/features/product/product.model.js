@@ -47,10 +47,10 @@ export default class ProductModel {
       const user = UserModel.getAll().find(
         (u)=> u.id == userId
       );
-      console.log('user',user);
+     
       
         if(!user){
-          return "User not found";
+          throw new Error("User not found");
         }
 
         const product = products.find(
@@ -58,7 +58,7 @@ export default class ProductModel {
         );
         console.log('product',product);
         if(!product){
-          return "Product not found";
+          throw new Error(" Product not found");
         }
          //2. check if user Rating is already available
          if(!product.ratings){
